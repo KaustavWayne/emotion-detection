@@ -57,3 +57,20 @@ git remote add origin "https:/github"
 git status 
 git push origin main 
 
+
+-- Version controlling
+
+git tag -a v1.0 -m "Release V1 with BoW"  
+
+git push origin main 
+
+git tag -a v2.0 -m "Release V2 with TfIdf"
+
+git push origin main 
+
+git push origin --tags 
+
+
+--- Roll back code
+
+git checkout tags/v1.0
