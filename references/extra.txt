@@ -1,0 +1,59 @@
+# 1️⃣ Data Ingestion
+dvc stage add -n data_ingestion \
+    -d src/data/data_ingestion.py -d params.yaml \
+    -o data/raw \
+    python src/data/data_ingestion.py
+
+# 2️⃣ Data Preprocessing
+dvc stage add -n data_preprocessing \
+    -d src/data/data_preprocessing.py -d data/raw -d params.yaml \
+    -o data/interim \
+    python src/data/data_preprocessing.py
+
+# 3️⃣ Feature Engineering
+dvc stage add -n feature_engineering \
+    -d src/features/feature_engineering.py -d data/interim -d params.yaml \
+    -o data/processed \
+    python src/features/feature_engineering.py
+
+# 4️⃣ Model Building
+dvc stage add -n model_building \
+    -d src/models/model_building.py -d data/processed -d params.yaml \
+    -o models/model.pkl \
+    python src/models/model_building.py
+
+# 5️⃣ Model Evaluation
+dvc stage add -n model_evaluation \
+    -d src/models/model_evaluation.py -d models/model.pkl # -d data/processed -d params.yaml \
+    -o reports/metrics.json -o reports/confusion_matrix.png \
+    python src/models/model_evaluation.py
+
+
+-- Github Changing accounts 
+
+git credential-manager clear
+git config --global user.name "KaustavWayne"
+git config --global user.email "your_email_used_for_github@example.com"
+cmdkey /delete:git:https://github.com
+
+git remote -v
+git remote remove origin 
+git remote -v
+
+
+-- To remove stored repo 
+
+git init 
+
+Remove-Item -Recurse -Force .git
+
+git status 
+git init 
+git status 
+git add . 
+git commit -m "add cookie cutter template"
+git status 
+git remote add origin "https:/github" 
+git status 
+git push origin main 
+
