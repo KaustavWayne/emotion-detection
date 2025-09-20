@@ -53,57 +53,48 @@ stages:
       size: 141
     - path: src/features/feature_engineering.py
       hash: md5
-      md5: 2ea7263e390b45fbf3a4e82b3442d658
-      size: 3766
+      md5: e8c851f54646b36c042ca6c1547ae879
+      size: 3767
     outs:
     - path: data/processed
       hash: md5
-      md5: accdec2100284971dd1422af43f346c0.dir
-      size: 4534613
+      md5: 278a1fabe1c09b434607b3a3d009e39c.dir
+      size: 2106516
       nfiles: 2
   model_building:
-    cmd: python src/models/model_building.py
+    cmd: python src/model/model_building.py
     deps:
     - path: data/processed
       hash: md5
-      md5: accdec2100284971dd1422af43f346c0.dir
-      size: 4534613
+      md5: 278a1fabe1c09b434607b3a3d009e39c.dir
+      size: 2106516
       nfiles: 2
     - path: params.yaml
       hash: md5
       md5: c69acd0514e21bc4fa4e41d72e3afe3b
       size: 141
-    - path: src/models/model_building.py
+    - path: src/model/model_building.py
       hash: md5
-      md5: 7372d8540c0009f9ec5af853f978ef7e
-      size: 3061
+      md5: daa25e7153a0d98f7d391052bcae498c
+      size: 3104
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 8f9883e082fe5d56eb75a7409ae30b01
-      size: 36734
+      md5: 2b55f261d22ffb109efaaeaf1336957d
+      size: 39489
   model_evaluation:
-    cmd: python src/models/model_evaluation.py
+    cmd: python src/model/model_evaluation.py
     deps:
-    - path: data/processed
-      hash: md5
-      md5: accdec2100284971dd1422af43f346c0.dir
-      size: 4534613
-      nfiles: 2
     - path: models/model.pkl
       hash: md5
-      md5: 8f9883e082fe5d56eb75a7409ae30b01
-      size: 36734
-    - path: params.yaml
+      md5: 2b55f261d22ffb109efaaeaf1336957d
+      size: 39489
+    - path: src/model/model_evaluation.py
       hash: md5
-      md5: c69acd0514e21bc4fa4e41d72e3afe3b
-      size: 141
-    - path: src/models/model_evaluation.py
-      hash: md5
-      md5: c790ebd488e0e50840e8a2e6fdb3cdf5
-      size: 3369
+      md5: 39724688af276ee78cb53fe755aec174
+      size: 3475
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: 24032d2cddf4f8e1715cf95a1e86c98b
-      size: 146
+      md5: a5c5c1a21ce6f9f9a33ffd5c7118e798
+      size: 144
