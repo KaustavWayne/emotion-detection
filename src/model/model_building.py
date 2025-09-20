@@ -78,7 +78,8 @@ def main():
         params = load_params('params.yaml')['model_building']
 
         # use BoW outputs instead of TF-IDF
-        train_data = load_data('./data/processed/train_bow.csv')
+        #train_data = load_data('./data/processed/train_bow.csv')
+        train_data = load_data('./data/processed/train_tfidf.csv')
         X_train = train_data.iloc[:, :-1].values
         y_train = train_data.iloc[:, -1].values
 

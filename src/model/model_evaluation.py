@@ -86,8 +86,8 @@ def main():
     try:
         clf = load_model('./models/model.pkl')
         # use BoW file instead of tfidf
-        test_data = load_data('./data/processed/test_bow.csv')
-        #test_data = load_data('./data/processed/test_tfidf.csv')
+        #test_data = load_data('./data/processed/test_bow.csv')
+        test_data = load_data('./data/processed/test_tfidf.csv')
         
         X_test = test_data.iloc[:, :-1].values
         y_test = test_data.iloc[:, -1].values
